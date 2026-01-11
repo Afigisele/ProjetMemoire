@@ -1,29 +1,26 @@
-package com.projet.workLink.DTO.Response;
+package com.projet.workLink.DTO.Request;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
-
 @Builder
-public class UtilisateursResponse {
-    private UUID trackingId;
+public class Inscriptionrequest {
     private String nom;
     private String prenom;
     private String email;
+    private String motDepasse;
     private String telephone;
 
-
-    public UUID getTrackingId() {
-        return trackingId;
+    public String getNom() {
+        return nom;
     }
 
-    public void setTrackingId(UUID trackingId) {
-        this.trackingId = trackingId;
+    public void setNom(String nom) {
+        this.nom = nom;
     }
 
     public String getPrenom() {
@@ -34,20 +31,20 @@ public class UtilisateursResponse {
         this.prenom = prenom;
     }
 
-    public String getNom() {
-        return nom;
-    }
-
-    public void setNom(String nom) {
-        this.nom = nom;
-    }
-
     public String getEmail() {
         return email;
     }
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getMotDepasse() {
+        return motDepasse;
+    }
+
+    public void setMotDepasse(String motDepasse) {
+        this.motDepasse = motDepasse;
     }
 
     public String getTelephone() {
@@ -57,5 +54,4 @@ public class UtilisateursResponse {
     public void setTelephone(String telephone) {
         this.telephone = telephone;
     }
-
 }

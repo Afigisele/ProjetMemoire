@@ -2,6 +2,7 @@ package com.projet.workLink.Models;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -11,14 +12,15 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
+@Builder
 public class Demandeur {
 
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
-    private UUID trackinhId;
+    private Long id;
+    private UUID trackingId;
+    private String photoProfil;
     private String cv;
-
-    @ManyToOne
-    @JoinColumn(name = "id_utilisateur_id")
-    public Utilisateurs idUtilisateur;
+    private String description;
+    private UUID idUtilisateur;
 }

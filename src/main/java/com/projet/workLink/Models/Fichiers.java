@@ -11,16 +11,17 @@ import lombok.NoArgsConstructor;
 
 import java.util.UUID;
 
-@Entity
-@NoArgsConstructor
-@AllArgsConstructor
-@Data
 @Builder
-public class Candidature {
-    @Id
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Entity
+public class Fichiers {
+
+    @jakarta.persistence.Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long Id;
     private UUID trackingId;
-    private UUID idDemandeur ;
-    private UUID idOffreEmploi;
+    private String fichierNom;
+    private UUID idUtilisateur;
 }

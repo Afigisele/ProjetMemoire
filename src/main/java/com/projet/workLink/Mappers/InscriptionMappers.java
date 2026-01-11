@@ -1,6 +1,6 @@
 package com.projet.workLink.Mappers;
 
-import com.projet.workLink.DTO.Request.Inscription;
+import com.projet.workLink.DTO.Request.Inscriptionrequest;
 import com.projet.workLink.DTO.Response.UtilisateursResponse;
 import com.projet.workLink.Models.Utilisateurs;
 import org.springframework.stereotype.Component;
@@ -10,24 +10,32 @@ import java.util.UUID;
 @Component
 public class InscriptionMappers {
 
-    public Utilisateurs toEntity(Inscription inscription) {
-        Utilisateurs utilisateur = new Utilisateurs();
-        utilisateur.setTrackingId(UUID.randomUUID());
-        utilisateur.setNom(inscription.getNom());
-        utilisateur.setPrenom(inscription.getPrenom());
-        utilisateur.setEmail(inscription.getEmail());
-        utilisateur.setMotDepasse(inscription.getMotDepasse());
-        utilisateur.setTelephone(inscription.getTelephone());
-        return utilisateur;
+    //méthode pour mapper les informations récuperer chez l'utilisateur vers l'entité utilisateurs
+    public Utilisateurs toEntity (Inscriptionrequest inscriptionrequest){
+        if(inscriptionrequest == null){
+            throw new RuntimeException("inscription request is null");
+        }
+        return  Utilisateurs.builder()
+                .trackingId(UUID.randomUUID())
+                .nom(inscriptionrequest.getNom())
+                .prenom(inscriptionrequest.getPrenom())
+                .email(inscriptionrequest.getEmail())
+                .motDepasse(inscriptionrequest.getMotDepasse())
+                .telephone(inscriptionrequest.getTelephone())
+                .build();
     }
 
-    public UtilisateursResponse toResponse(Utilisateurs utilisateur) {
-        UtilisateursResponse response = new UtilisateursResponse();
-        response.setTrackingId(utilisateur.getTrackingId());
-        response.setNom(utilisateur.getNom());
-        response.setPrenom(utilisateur.getPrenom());
-        response.setEmail(utilisateur.getEmail());
-        response.setTelephone(utilisateur.getTelephone());
-        return response;
+    // méthode pour mapper les informations d'utilisateurs issue de la base de données
+    public UtilisateursResponse toResponse (Utilisateurs utilisateurs){
+        if(utilisateurs == null){
+            throw new RuntimeException("utilisateurs is null");
+        }
+        return UtilisateursResponse.builder()
+                .trackingId(utilisateurs.getTrackingId())
+                .nom(utilisateurs.getNom())
+                .prenom(utilisateurs.getPrenom())
+                .email(utilisateurs.getEmail())
+                .telephone(utilisateurs.getTelephone())
+                .build();
     }
 }

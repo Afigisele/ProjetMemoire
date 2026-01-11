@@ -5,9 +5,11 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
@@ -15,6 +17,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
+@Builder
 public class OffreEmploi {
 
     @Id
@@ -23,8 +26,8 @@ public class OffreEmploi {
     private UUID trackingId;
     private String titre;
     private String description;
-    private LocalDateTime dateCreation;
-    private LocalDateTime dateLimiteDepot;
+    private LocalDate dateCreation;
+    private LocalDate dateLimiteDepot;
     private String lieu;
     private String type;
 }
