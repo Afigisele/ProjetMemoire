@@ -1,19 +1,15 @@
 package com.projet.workLink.Models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import jakarta.persistence.*;
+import lombok.*;
 
 import java.util.UUID;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@Data
-
+@Builder
+@Getter
+@Setter
 public class Utilisateurs {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,4 +20,8 @@ public class Utilisateurs {
     private String email;
     private String motDepasse;
     private String telephone;
+    @Enumerated(EnumType.STRING)
+    private Roles roles;
+
+
 }

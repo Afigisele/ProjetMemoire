@@ -1,10 +1,8 @@
 package com.projet.workLink.Models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -14,14 +12,17 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-
+@Builder
 public class Employeur {
 
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
+    private Long id;
     private UUID trackingId;
     private String nomEntreprise;
-    //private Secteur secteur;
+    @Enumerated(EnumType.STRING)
+    private Secteur secteur;
     private String logo;
+    private UUID idUtilisateurs;
     private boolean etat;
 }
